@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,37 +18,39 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { 
-      name: 'Services', 
-      href: '/services',
+    { name: "Home", href: "/" },
+    {
+      name: "Services",
+      href: "/services",
       dropdown: [
-        { name: 'Website Development', href: '/services/website-development' },
-        { name: 'Maintenance', href: '/services/maintenance' },
-        { name: 'Deployment', href: '/services/deployment' },
-        { name: 'Analytics', href: '/services/analytics' },
-        { name: 'E-commerce', href: '/services/ecommerce' },
-        { name: 'Consulting', href: '/services/consulting' }
-      ]
+        { name: "Website Development", href: "/services/website-development" },
+        { name: "Maintenance", href: "/services/maintenance" },
+        { name: "Deployment", href: "/services/deployment" },
+        { name: "Analytics", href: "/services/analytics" },
+        { name: "E-commerce", href: "/services/ecommerce" },
+        { name: "Consulting", href: "/services/consulting" },
+      ],
     },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' }
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (href) => pathname === href;
 
   return (
-    <nav className={cn(
-      'fixed top-0 w-full z-50 transition-all duration-300',
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
-        : 'bg-transparent'
-    )}>
+    <nav
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+          : "bg-transparent"
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -66,21 +68,23 @@ const Navbar = () => {
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.dropdown ? (
-                  <div 
+                  <div
                     className="relative"
                     onMouseEnter={() => setIsServicesOpen(true)}
                     onMouseLeave={() => setIsServicesOpen(false)}
                   >
-                    <button className={cn(
-                      'flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200',
-                      isActive(item.href) 
-                        ? 'text-blue-600' 
-                        : 'text-gray-700 hover:text-blue-600'
-                    )}>
+                    <button
+                      className={cn(
+                        "flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200",
+                        isActive(item.href)
+                          ? "text-blue-600"
+                          : "text-gray-700 hover:text-blue-600"
+                      )}
+                    >
                       <span>{item.name}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
-                    
+
                     {isServicesOpen && (
                       <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
                         {item.dropdown.map((dropdownItem) => (
@@ -99,10 +103,10 @@ const Navbar = () => {
                   <Link
                     href={item.href}
                     className={cn(
-                      'px-3 py-2 text-sm font-medium transition-colors duration-200',
-                      isActive(item.href) 
-                        ? 'text-blue-600' 
-                        : 'text-gray-700 hover:text-blue-600'
+                      "px-3 py-2 text-sm font-medium transition-colors duration-200",
+                      isActive(item.href)
+                        ? "text-blue-600"
+                        : "text-gray-700 hover:text-blue-600"
                     )}
                   >
                     {item.name}
@@ -132,7 +136,11 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -146,10 +154,10 @@ const Navbar = () => {
                   <Link
                     href={item.href}
                     className={cn(
-                      'block px-3 py-2 text-base font-medium transition-colors duration-200',
-                      isActive(item.href) 
-                        ? 'text-blue-600 bg-blue-50' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      "block px-3 py-2 text-base font-medium transition-colors duration-200",
+                      isActive(item.href)
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -173,10 +181,15 @@ const Navbar = () => {
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-2">
                 <Link href="/login" onClick={() => setIsOpen(false)}>
-                  <Button variant="ghost" size="sm" className="w-full">
+                  <Button
+                    variant="default" // use solid background
+                    size="lg" // larger for mobile tap area
+                    className="w-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+                  >
                     Login
                   </Button>
                 </Link>
+
                 <Link href="/signup" onClick={() => setIsOpen(false)}>
                   <Button variant="gradient" size="sm" className="w-full">
                     Get Started
