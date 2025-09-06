@@ -181,15 +181,10 @@ const Navbar = () => {
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-2">
                 <Link href="/login" onClick={() => setIsOpen(false)}>
-                  <Button
-                    variant="default" // use solid background
-                    size="lg" // larger for mobile tap area
-                    className="w-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-                  >
+                  <Button variant="ghost" size="sm" className="w-full">
                     Login
                   </Button>
                 </Link>
-
                 <Link href="/signup" onClick={() => setIsOpen(false)}>
                   <Button variant="gradient" size="sm" className="w-full">
                     Get Started

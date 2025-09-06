@@ -79,7 +79,7 @@ const Hero = () => {
           <div className="text-center lg:text-left">
             <h1
               ref={titleRef}
-              className="mt-20 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
             >
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
                 Professional
