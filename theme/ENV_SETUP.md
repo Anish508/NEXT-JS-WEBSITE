@@ -7,7 +7,7 @@ Create a `.env.local` file in the `theme/` directory with the following variable
 ```bash
 # MongoDB Configuration
 MONGODB_URI=mongodb://localhost:27017/bodhify-tech
-
+#ok
 # JWT Secret (generate a secure random string)
 JWT_SECRET=your-super-secret-jwt-key-here
 
