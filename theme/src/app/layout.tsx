@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ChatbotWrapper from "@/components/ChatbotWrapper";
+import AOSProvider from "./providers/AOSProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -70,10 +71,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-  <Footer />
-  <ChatbotWrapper />
+        <AOSProvider>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <ChatbotWrapper />
+        </AOSProvider>
       </body>
     </html>
   );

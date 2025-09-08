@@ -40,6 +40,7 @@ export default function ServicesPage() {
               <Card
                 key={service.id}
                 className="h-full border rounded-xl shadow-sm hover:shadow-md transition-shadow bg-white"
+                data-aos="fade-right"
               >
                 <CardHeader className="text-center pb-4">
                   <div className="text-4xl mb-4">{service.icon}</div>
