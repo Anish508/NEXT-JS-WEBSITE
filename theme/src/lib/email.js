@@ -1,13 +1,26 @@
+"use server";
 import { Resend } from 'resend';
+import nodemailer from "nodemailer";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendContactEmail({ name, email, message }) {
   try {
-    const { data, error } = await resend.emails.send({
-  from: 'Bodhify.tech <contactus@bodhify.tech>',
-  to: ['anishbarke9741@gmail.com', 'shrinidhim9168@gmail.com'],
-  subject: `New Contact Form Submission from ${name}`,
+    // Gmail SMTP relay setup
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465, // or 587 if not using SSL
+      secure: true, // true for 465, false for 587
+      auth: {
+        user: process.env.EMAIL_USER, // your Gmail address
+        pass: process.env.EMAIL_PASS, // app password, not your real Gmail password
+      },
+    });
+
+    const mailOptions = {
+      from: `"Bodhify.tech" <${process.env.EMAIL_USER}>`,
+      to: ["anishbarke9741@gmail.com", "shrinidhim9168@gmail.com"],
+      subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
@@ -23,7 +36,7 @@ export async function sendContactEmail({ name, email, message }) {
           
           <div style="background-color: #ffffff; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px;">
             <h3 style="color: #495057; margin-top: 0;">Message</h3>
-            <p style="line-height: 1.6; color: #333;">${message.replace(/\n/g, '<br>')}</p>
+            <p style="line-height: 1.6; color: #333;">${message.replace(/\n/g, "<br>")}</p>
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; text-align: center; color: #6c757d;">
@@ -32,19 +45,17 @@ export async function sendContactEmail({ name, email, message }) {
           </div>
         </div>
       `,
-    });
+    };
 
-    if (error) {
-      console.error('Error sending email:', error);
-      return { success: false, error: error.message };
-    }
+    const info = await transporter.sendMail(mailOptions);
 
-    return { success: true, data };
+    return { success: true, data: info };
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
     return { success: false, error: error.message };
   }
 }
+
 
 export async function sendWelcomeEmail({ name, email }) {
   try {
