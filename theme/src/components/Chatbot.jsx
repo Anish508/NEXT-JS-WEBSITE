@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const BOT_INTRO = `Hi! 👋 I’m Gemini, your virtual assistant. I can answer questions about our development and maintenance services, help you get in touch, or guide you through our offerings. How can I help you today?`;
+const BOT_INTRO = `Hi! 👋 I’m TechMate, your virtual assistant from Bodhify Tech. I can answer questions about our development, maintenance, and other services, help you get in touch, or guide you through our offerings. How can I assist you today?
+`;
 
 
 export default function Chatbot() {
