@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo, createRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -11,72 +11,47 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+} from "../../components/ui/Card";
+import { Button } from "../../components/ui/Button";
 import { services, categories } from "@/data/services";
 
-// Register GSAP plugins
+// Register GSAP plugin (safe to call more than once)
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface Service {
+type Service = {
   id: string;
   title: string;
   description: string;
   features: string[];
-  icon: string;
+  icon: React.ReactNode | string;
   price: string;
   duration: string;
   category: string;
-}
+};
 
-interface Category {
-  id: string;
-  name: string;
-  description: string;
-}
+type Category = { id: string; name: string; description: string };
 
-interface ServiceCardProps {
+const ServiceCard = ({
+  service,
+  cardRef,
+}: {
   service: Service;
-  index: number;
-}
-
-const ServiceCard = ({ service, index }: ServiceCardProps) => {
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cardRef.current,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          delay: index * 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }, cardRef);
-
-    return () => ctx.revert();
-  }, [index]);
-
+  cardRef: React.RefObject<HTMLDivElement>;
+}) => {
   return (
     <Card
       ref={cardRef}
+      style={{ willChange: "transform, opacity" }}
       className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm hover:bg-white h-full"
+      aria-labelledby={`service-${service.id}-title`}
     >
       <CardHeader className="text-center pb-4">
-        <div className="text-4xl mb-4">{service.icon}</div>
-        <CardTitle className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+        <div className="text-4xl mb-4" aria-hidden>
+          {service.icon}
+        </div>
+        <CardTitle id={`service-${service.id}-title`} className="text-xl">
           {service.title}
         </CardTitle>
         <CardDescription className="text-gray-600 leading-relaxed">
@@ -85,7 +60,6 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
       </CardHeader>
 
       <CardContent className="space-y-6 flex flex-col h-full">
-        {/* Features */}
         <div className="space-y-3 flex-grow">
           {service.features.map((feature: string, idx: number) => (
             <div key={idx} className="flex items-center space-x-3">
@@ -95,7 +69,6 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
           ))}
         </div>
 
-        {/* Price & Duration */}
         <div className="flex justify-between items-center pt-4 border-t border-gray-100">
           <div>
             <div className="text-lg font-semibold text-blue-600">
@@ -105,14 +78,15 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
           </div>
         </div>
 
-        {/* CTA */}
-        <Link href={`/services/${service.id}`}>
+        <Link href={`/services/${service.id}`} className="w-full">
           <Button
             variant="outline"
             className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
           >
-            Learn More
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            <span className="flex items-center justify-center w-full">
+              Learn More
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </span>
           </Button>
         </Link>
       </CardContent>
@@ -120,55 +94,135 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
   );
 };
 
-const Services = () => {
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
+export default function ServicesPage() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
 
+  // Stable refs for cards
+  const cardRefs = useMemo(
+    () =>
+      Array.from({ length: services.length }, () =>
+        createRef<HTMLDivElement>()
+      ),
+    []
+  );
+
+  // Hero animations (lightweight)
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        titleRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+    if (!sectionRef.current) return;
 
-      gsap.fromTo(
-        subtitleRef.current,
-        { y: 30, opacity: 0 },
-        {
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReduced) {
+        gsap.set([titleRef.current, subtitleRef.current], {
+          autoAlpha: 1,
           y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+        });
+        return;
+      }
+
+      gsap.from(titleRef.current, {
+        y: 50,
+        autoAlpha: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          markers: false,
+        },
+      });
+
+      gsap.from(subtitleRef.current, {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.9,
+        delay: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          markers: false,
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  // Batch animation for card grid (optimized)
+  useEffect(() => {
+    const elements = cardRefs
+      .map((r) => r.current)
+      .filter(Boolean) as Element[];
+    if (!elements.length) return;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const ctx = gsap.context(() => {
+      // initial state
+      gsap.set(elements, {
+        autoAlpha: prefersReduced ? 1 : 0,
+        y: prefersReduced ? 0 : 30,
+        willChange: "transform,opacity",
+      });
+
+      if (prefersReduced) return;
+
+      ScrollTrigger.batch(elements, {
+        interval: 0.1, // how often batch callback runs (seconds)
+        start: "top 90%",
+        onEnter: (batch) =>
+          gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            stagger: { each: 0.12, from: "start" },
+            duration: 0.6,
+            ease: "power2.out",
+            overwrite: true,
+          }),
+        onLeave: (batch) =>
+          gsap.to(batch, {
+            autoAlpha: 0,
+            y: 30,
+            duration: 0.4,
+            ease: "power2.in",
+            overwrite: true,
+          }),
+        onEnterBack: (batch) =>
+          gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            stagger: { each: 0.12, from: "end" },
+            duration: 0.6,
+            ease: "power2.out",
+            overwrite: true,
+          }),
+        onLeaveBack: (batch) =>
+          gsap.to(batch, {
+            autoAlpha: 0,
+            y: 30,
+            duration: 0.4,
+            ease: "power2.in",
+            overwrite: true,
+          }),
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [cardRefs]);
+
   return (
-    <div ref={sectionRef} className="min-h-screen">
-      {/* Hero Section */}
+    <main ref={sectionRef} className="min-h-screen bg-white text-gray-900">
+      {/* Hero */}
       <section className="pt-20 pb-16 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -198,13 +252,17 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+              <ServiceCard
+                key={service.id}
+                service={service as Service}
+                cardRef={cardRefs[index]}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Categories Section */}
+      {/* Categories */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -230,14 +288,14 @@ const Services = () => {
                 <CardContent>
                   <div className="space-y-2">
                     {services
-                      .filter((service) => service.category === category.id)
-                      .map((service) => (
+                      .filter((s) => s.category === category.id)
+                      .map((s) => (
                         <Link
-                          key={service.id}
-                          href={`/services/${service.id}`}
+                          key={s.id}
+                          href={`/services/${s.id}`}
                           className="block text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"
                         >
-                          {service.title}
+                          {s.title}
                         </Link>
                       ))}
                   </div>
@@ -248,7 +306,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -280,8 +338,6 @@ const Services = () => {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
-};
-
-export default Services;
+}
