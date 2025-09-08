@@ -12,7 +12,7 @@ export const services = [
       'Modern UI/UX Design'
     ],
     icon: '🌐',
-    price: 'Starting at $2,500',
+    price: 'Starting at $50',
     duration: '4-8 weeks',
     category: 'development'
   },
@@ -29,7 +29,7 @@ export const services = [
       '24/7 Support'
     ],
     icon: '🔧',
-    price: 'Starting at $199/month',
+    price: 'Starting at $12/month',
     duration: 'Ongoing',
     category: 'maintenance'
   },
@@ -38,7 +38,6 @@ export const services = [
     title: 'Deployment & DevOps',
     description: 'Professional deployment services with CI/CD pipelines, cloud infrastructure setup, and monitoring solutions for optimal performance.',
     features: [
-      'Cloud Infrastructure Setup',
       'CI/CD Pipeline Implementation',
       'Docker Containerization',
       'Load Balancing',
@@ -56,8 +55,6 @@ export const services = [
     description: 'Comprehensive analytics setup and reporting to help you understand your users and optimize your digital presence for better results.',
     features: [
       'Google Analytics 4 Setup',
-      'Custom Event Tracking',
-      'Conversion Funnel Analysis',
       'User Behavior Insights',
       'Performance Reports',
       'A/B Testing Implementation'
@@ -80,10 +77,10 @@ export const services = [
       'Mobile Commerce'
     ],
     icon: '🛒',
-    price: 'Starting at $5,000',
+    price: 'Starting at $8700',
     duration: '8-12 weeks',
     category: 'ecommerce'
-  },
+  }, 
   {
     id: 'consulting',
     title: 'Technical Consulting',
@@ -97,7 +94,7 @@ export const services = [
       'Migration Planning'
     ],
     icon: '💡',
-    price: 'Starting at $150/hour',
+    price: 'Free',
     duration: 'Flexible',
     category: 'consulting'
   }
