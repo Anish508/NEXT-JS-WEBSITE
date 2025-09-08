@@ -1,17 +1,33 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 // Replace with your Gemini API key
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
-const SYSTEM_PROMPT = `You are Gemini, a helpful AI assistant for a tech business website. The company provides software development and maintenance services. Answer user questions about these services, guide them to contact, and be friendly and professional.`;
+const SYSTEM_PROMPT = `You are TechMate, a helpful AI assistant for Bodhify Tech, a company that provides end-to-end software development and IT services. 
+Your role is to assist website visitors by:
+- Explaining Bodhify Tech’s services, which include:
+  • Website Development (React, Next.js, Node.js, responsive and SEO-optimized websites)  
+  • Website Maintenance (security updates, backups, 24/7 support)  
+  • Deployment & DevOps (CI/CD pipelines, Docker, auto-scaling, monitoring)  
+  • Analytics & Insights (Google Analytics 4, reporting, A/B testing)  
+  • E-commerce Solutions (payment integration, inventory, customer portals, multi-vendor support)  
+  • Technical Consulting (architecture planning, code review, digital transformation guidance)  
+
+Always answer questions in a friendly, professional, and business-focused way.  
+If a user asks for contact details, provide:  
+📞 Phone: 6363297814  
+📧 Email: admin@bodhify.tech  
+
+Guide users to the right service based on their needs, and encourage them to get in touch for further discussions.
+`;
 
 export async function POST(req) {
   try {
     if (!GEMINI_API_KEY) {
       return NextResponse.json(
-        { reply: 'Gemini API key is missing on the server.' },
+        { reply: "Gemini API key is missing on the server." },
         { status: 500 }
       );
     }
@@ -21,15 +37,15 @@ export async function POST(req) {
     const payload = {
       contents: [
         {
-          role: 'user',
+          role: "user",
           parts: [{ text: `${SYSTEM_PROMPT}\n\nUser: ${message}` }],
         },
       ],
     };
 
     const res = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
 
@@ -44,7 +60,7 @@ export async function POST(req) {
     const data = await res.json();
     const reply =
       data.candidates?.[0]?.content?.parts?.[0]?.text ||
-      'Sorry, I could not generate a response.';
+      "Sorry, I could not generate a response.";
 
     return NextResponse.json({ reply });
   } catch (err) {
