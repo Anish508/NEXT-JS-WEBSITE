@@ -5,7 +5,7 @@ const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <div data-aos="fade-left" data-aos-duration="1000"
     ref={ref}
     className={cn(
       "rounded-xl border bg-white text-gray-900 shadow-sm", // ✅ Always light
@@ -20,7 +20,7 @@ const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <div 
     ref={ref}
     className={cn("flex flex-col space-y-1.5 p-6", className)}
     {...props}
