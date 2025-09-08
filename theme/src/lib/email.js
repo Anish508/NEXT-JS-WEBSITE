@@ -5,9 +5,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function sendContactEmail({ name, email, message }) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Bodhify.tech <noreply@bodhify.tech>',
-      to: ['admin@bodhify.tech'],
-      subject: `New Contact Form Submission from ${name}`,
+  from: 'Bodhify.tech <contactus@bodhify.tech>',
+  to: ['anishbarke9741@gmail.com', 'shrinidhim9168@gmail.com'],
+  subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
