@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const BOT_INTRO = `Hi! 👋 I’m TechMate, your virtual assistant from Bodhify Tech. I can answer questions about our development, maintenance, and other services, help you get in touch, or guide you through our offerings. How can I assist you today?
-`;
+const BOT_INTRO = `Hi! 👋 I’m TechMate, your virtual assistant from Bodhify Tech. 
+I can answer questions about our development, maintenance, and other services, 
+help you get in touch, or guide you through our offerings. 
 
+How can I assist you today?
+`;
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
@@ -134,7 +137,7 @@ export default function Chatbot() {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-            <span>💬 Gemini Chatbot</span>
+            <span>💬 TechMate Chatbot</span>
             <button
               aria-label="Close chatbot"
               onClick={() => setOpen(false)}
@@ -158,8 +161,13 @@ export default function Chatbot() {
             fontSize: 15,
           }}>
             {messages.map((msg, i) => (
-              <div key={i} style={msg.sender === 'bot' ? styles.botMsg : styles.userMsg}>
-                {msg.text}
+              <div
+                key={i}
+                style={msg.sender === 'bot' ? styles.botMsg : styles.userMsg}
+              >
+                <span style={{ whiteSpace: "pre-line" }}>
+                  {msg.text}
+                </span>
               </div>
             ))}
             <div ref={messagesEndRef} />
@@ -177,12 +185,12 @@ export default function Chatbot() {
                 flex: 1,
                 border: 'none',
                 outline: 'none',
-                fontSize: 15,
+                fontSize: 12,
                 padding: '8px 12px',
                 borderRadius: 8,
-                background: '#f1f5f9',
                 marginRight: 8,
-                color:'black'
+                color: 'black',
+                fontWeight: 600
               }}
               value={input}
               onChange={e => setInput(e.target.value)}
@@ -250,6 +258,7 @@ const styles = {
     marginBottom: 8,
     alignSelf: 'flex-start',
     maxWidth: '85%',
+    whiteSpace: 'pre-line',
   },
   userMsg: {
     background: '#3182ce',
@@ -259,6 +268,7 @@ const styles = {
     marginBottom: 8,
     alignSelf: 'flex-end',
     maxWidth: '85%',
+    whiteSpace: 'pre-line',
   },
   inputBar: {
     display: 'flex',
