@@ -83,10 +83,14 @@ const ServiceCard = ({
             variant="outline"
             className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
           >
-            <span className="flex items-center justify-center w-full">
-              Learn More
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-            </span>
+            <Button
+              variant="outline"
+              className="w-full flex items-center justify-center text-base sm:text-sm px-4 py-2 group 
+             group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
+            >
+              <span className="mr-2">Learn More</span>
+              <ArrowRight className="w-5 h-5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
           </Button>
         </Link>
       </CardContent>
