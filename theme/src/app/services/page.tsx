@@ -165,9 +165,9 @@ export default function ServicesPage() {
             </Link>
             <Link href="/about">
               <Button
-                variant="outline"
+                // variant="outline"
                 size="lg"
-                className="rounded-lg text-white border-white hover:bg-white/10"
+                className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white"
               >
                 Learn More About Us
               </Button>

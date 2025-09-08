@@ -5,7 +5,7 @@ const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div data-aos="fade-left" data-aos-duration="1000"
+  <div
     ref={ref}
     className={cn(
       "rounded-xl border bg-white text-gray-900 shadow-sm", // ✅ Always light

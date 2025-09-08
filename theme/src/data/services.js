@@ -2,7 +2,7 @@ export const services = [
   {
     id: 'website-development',
     title: 'Website Development',
-    description: 'Custom web applications built with modern technologies like React, Next.js, and Node.js. We create responsive, fast, and SEO-optimized websites that drive business growth.',
+    description: 'Custom web apps built with modern tech like React, Next.js, and Node.js. Responsive, fast, SEO-ready websites that fuel growth.',
     features: [
       'Custom React & Next.js Development',
       'Responsive Design',
@@ -12,14 +12,14 @@ export const services = [
       'Modern UI/UX Design'
     ],
     icon: '🌐',
-    price: 'Starting at $50',
+    price: 'Starting at $800',
     duration: '4-8 weeks',
     category: 'development'
   },
   {
     id: 'maintenance',
     title: 'Website Maintenance',
-    description: 'Keep your website running smoothly with our comprehensive maintenance services. Regular updates, security patches, and performance monitoring.',
+    description: 'Keep website running smoothly with comprehensive maintenance services. Regular updates, security, and performance monitoring.',
     features: [
       'Regular Security Updates',
       'Performance Monitoring',
@@ -29,7 +29,7 @@ export const services = [
       '24/7 Support'
     ],
     icon: '🔧',
-    price: 'Starting at $12/month',
+    price: 'Starting at $49/month',
     duration: 'Ongoing',
     category: 'maintenance'
   },
@@ -42,10 +42,11 @@ export const services = [
       'Docker Containerization',
       'Load Balancing',
       'Monitoring & Logging',
-      'Auto-scaling Configuration'
+      'Auto-scaling Configuration',
+      'Infrastructure as Code'
     ],
     icon: '🚀',
-    price: 'Starting at $1,500',
+    price: 'Starting at $600',
     duration: '1-2 weeks',
     category: 'devops'
   },
@@ -57,10 +58,12 @@ export const services = [
       'Google Analytics 4 Setup',
       'User Behavior Insights',
       'Performance Reports',
-      'A/B Testing Implementation'
+      'A/B Testing Implementation',
+      'Conversion Funnel Tracking',
+      'Custom Dashboards'
     ],
     icon: '📊',
-    price: 'Starting at $500',
+    price: 'Starting at $300',
     duration: '1-2 weeks',
     category: 'analytics'
   },
@@ -77,10 +80,10 @@ export const services = [
       'Mobile Commerce'
     ],
     icon: '🛒',
-    price: 'Starting at $8700',
+    price: 'Starting at $3,500',
     duration: '8-12 weeks',
     category: 'ecommerce'
-  }, 
+  },
   {
     id: 'consulting',
     title: 'Technical Consulting',
@@ -94,7 +97,7 @@ export const services = [
       'Migration Planning'
     ],
     icon: '💡',
-    price: 'Free',
+    price: 'Free (first session), then $75/hour',
     duration: 'Flexible',
     category: 'consulting'
   }
