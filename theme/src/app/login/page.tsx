@@ -14,17 +14,15 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
+} from "../../components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ButtonLoader, FullPageLoader } from "@/components/ui/Loader";
 
-// Register GSAP plugins
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Form validation schema
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -107,7 +105,6 @@ const Login = () => {
       const result = await response.json();
 
       if (response.ok) {
-        // Redirect to home page after successful login
         window.location.href = "/";
       } else {
         setSubmitStatus("error");
@@ -128,7 +125,8 @@ const Login = () => {
       {isSubmitting && <FullPageLoader text="Signing you in..." />}
       <div
         ref={sectionRef}
-        className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+        className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 
+                   flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
@@ -200,9 +198,9 @@ const Login = () => {
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       {...register("password")}
-                      className={
-                        errors.password ? "border-red-500 pr-10" : "pr-10"
-                      }
+                      className={`pr-10 ${
+                        errors.password ? "border-red-500" : ""
+                      }`}
                     />
                     <button
                       type="button"

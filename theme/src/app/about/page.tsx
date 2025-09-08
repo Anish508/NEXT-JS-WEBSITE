@@ -29,7 +29,6 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         titleRef.current,
         { y: 50, opacity: 0 },
@@ -47,7 +46,6 @@ const About = () => {
         }
       );
 
-      // Subtitle animation
       gsap.fromTo(
         subtitleRef.current,
         { y: 30, opacity: 0 },
@@ -66,7 +64,6 @@ const About = () => {
         }
       );
 
-      // Mission section animation
       gsap.fromTo(
         missionRef.current,
         { y: 50, opacity: 0 },
@@ -85,7 +82,6 @@ const About = () => {
         }
       );
 
-      // Values section animation
       gsap.fromTo(
         valuesRef.current,
         { y: 50, opacity: 0 },
@@ -104,7 +100,6 @@ const About = () => {
         }
       );
 
-      // Team section animation
       gsap.fromTo(
         teamRef.current,
         { y: 50, opacity: 0 },
@@ -176,14 +171,17 @@ const About = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="min-h-screen">
+    <div
+      ref={sectionRef}
+      className="min-h-screen bg-white text-gray-900 antialiased"
+    >
       {/* Hero Section */}
       <section className="pt-20 pb-16 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1
               ref={titleRef}
-              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+              className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6"
             >
               About{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -192,7 +190,7 @@ const About = () => {
             </h1>
             <p
               ref={subtitleRef}
-              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
             >
               We are a passionate team of developers, designers, and innovators
               dedicated to creating exceptional digital experiences that drive
@@ -210,14 +208,14 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Our Mission
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
                 At Bodhify.tech, we believe that technology should be
                 accessible, beautiful, and powerful. Our mission is to help
                 businesses transform their digital presence through innovative
                 web solutions that combine cutting-edge technology with
                 exceptional user experiences.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                 We&apos;re committed to delivering projects that not only meet
                 your requirements but exceed your expectations, helping you
                 stand out in the digital landscape.
@@ -226,7 +224,7 @@ const About = () => {
             <div className="relative">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
                 <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
-                <ul className="space-y-3">
+                <ul className="space-y-3 text-base leading-relaxed">
                   <li className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                     <span>Modern technology stack</span>
@@ -257,7 +255,7 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               The principles that guide everything we do and shape our approach
               to every project.
             </p>
@@ -269,16 +267,18 @@ const About = () => {
               return (
                 <Card
                   key={index}
-                  className="text-center hover:shadow-lg transition-shadow duration-300"
+                  className="text-center hover:shadow-lg transition-shadow duration-300 bg-white"
                 >
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl">{value.title}</CardTitle>
+                    <CardTitle className="text-xl font-semibold">
+                      {value.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-600">
+                    <CardDescription className="text-gray-700 text-base leading-relaxed">
                       {value.description}
                     </CardDescription>
                   </CardContent>
@@ -296,7 +296,7 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               The talented individuals behind Bodhify.tech, bringing years of
               experience and passion to every project.
             </p>
@@ -306,7 +306,7 @@ const About = () => {
             {team.map((member, index) => (
               <Card
                 key={index}
-                className="text-center hover:shadow-lg transition-shadow duration-300"
+                className="text-center hover:shadow-lg transition-shadow duration-300 bg-white"
               >
                 <CardHeader>
                   <div className="w-32 h-32 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -317,13 +317,17 @@ const About = () => {
                         .join("")}
                     </span>
                   </div>
-                  <CardTitle className="text-xl">{member.name}</CardTitle>
+                  <CardTitle className="text-xl font-semibold">
+                    {member.name}
+                  </CardTitle>
                   <CardDescription className="text-blue-600 font-medium">
                     {member.role}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">{member.bio}</p>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    {member.bio}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -337,7 +341,7 @@ const About = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Work With Us?
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Let&apos;s discuss your project and see how we can help bring your
             vision to life.
           </p>
@@ -346,7 +350,7 @@ const About = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100"
+                className="bg-white text-blue-600 font-medium hover:bg-gray-100"
               >
                 Get In Touch
               </Button>
@@ -355,7 +359,7 @@ const About = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="text-white border-white hover:bg-white/10"
+                className="text-white border border-white font-medium hover:bg-white/10"
               >
                 View Our Services
               </Button>

@@ -1,116 +1,74 @@
-"use client";
-
-import { forwardRef, ReactNode } from "react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface CardProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-xl border bg-white text-gray-900 shadow-sm", // ✅ Always light
+      className
+    )}
+    {...props}
+  />
+));
 Card.displayName = "Card";
 
-interface CardHeaderProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ className, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+));
 CardHeader.displayName = "CardHeader";
 
-interface CardTitleProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
-  ({ className, children, ...props }, ref) => (
-    <h3
-      ref={ref}
-      className={cn(
-        "text-2xl font-semibold leading-none tracking-tight",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </h3>
-  )
-);
+const CardTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h3
+    ref={ref}
+    className={cn(
+      "font-semibold leading-none tracking-tight text-gray-900",
+      className
+    )}
+    {...props}
+  />
+));
 CardTitle.displayName = "CardTitle";
 
-interface CardDescriptionProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(
-  ({ className, children, ...props }, ref) => (
-    <p
-      ref={ref}
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    >
-      {children}
-    </p>
-  )
-);
+const CardDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p ref={ref} className={cn("text-sm text-gray-600", className)} {...props} />
+));
 CardDescription.displayName = "CardDescription";
 
-interface CardContentProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
-  ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("p-6 pt-0", className)} {...props}>
-      {children}
-    </div>
-  )
-);
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+));
 CardContent.displayName = "CardContent";
 
-interface CardFooterProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ className, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("flex items-center p-6 pt-0", className)}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+));
 CardFooter.displayName = "CardFooter";
 
 export {
