@@ -21,6 +21,9 @@ If a user asks for contact details, provide:
 📧 Email: admin@bodhify.tech  
 
 Guide users to the right service based on their needs, and encourage them to get in touch for further discussions.
+
+contact page url: https://www.bodhify.tech/contact
+service page url: https://www.bodhify.tech/services
 `;
 
 export async function POST(req) {

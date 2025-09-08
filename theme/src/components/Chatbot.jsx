@@ -182,6 +182,7 @@ export default function Chatbot() {
                 borderRadius: 8,
                 background: '#f1f5f9',
                 marginRight: 8,
+                color:'black'
               }}
               value={input}
               onChange={e => setInput(e.target.value)}
