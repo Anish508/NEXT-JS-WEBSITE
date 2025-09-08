@@ -179,10 +179,13 @@ const Signup = () => {
           </div>
 
           {/* Signup Form */}
-          <Card ref={formRef}>
+          <Card
+            ref={formRef}
+            className="bg-white shadow-lg border border-gray-200"
+          >
             <CardHeader>
-              <CardTitle>Sign Up</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-gray-900">Sign Up</CardTitle>
+              <CardDescription className="text-gray-600">
                 Create your account to get started
               </CardDescription>
             </CardHeader>

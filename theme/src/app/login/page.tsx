@@ -19,12 +19,10 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ButtonLoader, FullPageLoader } from "@/components/ui/Loader";
 
-// Register GSAP plugins
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Form validation schema
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -107,7 +105,6 @@ const Login = () => {
       const result = await response.json();
 
       if (response.ok) {
-        // Redirect to home page after successful login
         window.location.href = "/";
       } else {
         setSubmitStatus("error");
@@ -128,7 +125,9 @@ const Login = () => {
       {isSubmitting && <FullPageLoader text="Signing you in..." />}
       <div
         ref={sectionRef}
-        className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+        className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 
+                   dark:from-gray-900 dark:via-gray-950 dark:to-black 
+                   flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
@@ -147,18 +146,20 @@ const Login = () => {
 
             <h1
               ref={titleRef}
-              className="text-3xl font-bold text-gray-900 mb-2"
+              className="text-3xl font-bold text-gray-900 dark:text-white mb-2"
             >
               Welcome Back
             </h1>
-            <p className="text-gray-600">Sign in to your account to continue</p>
+            <p className="text-gray-600 dark:text-gray-400">
+              Sign in to your account to continue
+            </p>
           </div>
 
           {/* Login Form */}
-          <Card ref={formRef}>
+          <Card ref={formRef} className="dark:bg-gray-800 dark:border-gray-700">
             <CardHeader>
-              <CardTitle>Sign In</CardTitle>
-              <CardDescription>
+              <CardTitle className="dark:text-white">Sign In</CardTitle>
+              <CardDescription className="dark:text-gray-400">
                 Enter your credentials to access your account
               </CardDescription>
             </CardHeader>
@@ -168,7 +169,7 @@ const Login = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
                     Email Address
                   </label>
@@ -177,7 +178,11 @@ const Login = () => {
                     type="email"
                     placeholder="your.email@example.com"
                     {...register("email")}
-                    className={errors.email ? "border-red-500" : ""}
+                    className={`${
+                      errors.email
+                        ? "border-red-500"
+                        : "dark:bg-gray-900 dark:text-white"
+                    }`}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-600">
@@ -190,7 +195,7 @@ const Login = () => {
                 <div>
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
                     Password
                   </label>
@@ -200,9 +205,11 @@ const Login = () => {
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       {...register("password")}
-                      className={
-                        errors.password ? "border-red-500 pr-10" : "pr-10"
-                      }
+                      className={`pr-10 ${
+                        errors.password
+                          ? "border-red-500"
+                          : "dark:bg-gray-900 dark:text-white"
+                      }`}
                     />
                     <button
                       type="button"
@@ -230,18 +237,18 @@ const Login = () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded dark:border-gray-600"
                     />
                     <label
                       htmlFor="remember-me"
-                      className="ml-2 block text-sm text-gray-700"
+                      className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
                     >
                       Remember me
                     </label>
                   </div>
                   <Link
                     href="/forgot-password"
-                    className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                    className="text-sm text-blue-600 hover:text-blue-800 dark:hover:text-blue-400 transition-colors duration-200"
                   >
                     Forgot password?
                   </Link>
@@ -249,7 +256,7 @@ const Login = () => {
 
                 {/* Submit Status */}
                 {submitStatus === "error" && (
-                  <div className="p-4 rounded-lg bg-red-50 text-red-800 border border-red-200 flex items-center space-x-3">
+                  <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-700 flex items-center space-x-3">
                     <AlertCircle className="w-5 h-5" />
                     <p className="text-sm">{submitMessage}</p>
                   </div>
@@ -276,11 +283,11 @@ const Login = () => {
 
               {/* Sign Up Link */}
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Don&apos;t have an account?{" "}
                   <Link
                     href="/signup"
-                    className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+                    className="text-blue-600 hover:text-blue-800 dark:hover:text-blue-400 font-medium transition-colors duration-200"
                   >
                     Sign up here
                   </Link>
@@ -290,16 +297,16 @@ const Login = () => {
           </Card>
 
           {/* Demo Credentials */}
-          <Card>
+          <Card className="dark:bg-gray-800 dark:border-gray-700">
             <CardContent className="pt-6">
               <div className="text-center">
-                <h3 className="text-sm font-medium text-gray-900 mb-2">
+                <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
                   Demo Credentials
                 </h3>
-                <p className="text-xs text-gray-600 mb-2">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
                   Use these credentials to test the login functionality:
                 </p>
-                <div className="text-xs text-gray-500 space-y-1">
+                <div className="text-xs text-gray-500 dark:text-gray-400 space-y-1">
                   <p>
                     <strong>Email:</strong> demo@bodhify.tech
                   </p>
