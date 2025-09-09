@@ -9,27 +9,27 @@ import AOSProvider from "./providers/AOSProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bodhify.tech - Professional Web Development Services",
+  title: "Bodhify.tech - Web Development in Mangalore, Karnataka, India",
   description:
-    "Transform your business with modern, responsive websites featuring smooth animations, 3D elements, and exceptional user experiences. Professional web development services with React, Next.js, and cutting-edge technologies.",
+    "Professional web development services in Mangalore, Karnataka (575001), India. We build modern, responsive websites with React, Next.js, animations, 3D elements, and exceptional UI/UX to transform your business online.",
   keywords:
-    "web development, React, Next.js, website design, UI/UX, animations, 3D elements, professional development",
+    "Bodhify Tech, web development Mangalore, website design Mangalore Karnataka, Next.js development India, React developer Mangalore, professional web development Karnataka, UI/UX Mangalore, SEO-friendly websites, 3D elements websites Mangalore",
   authors: [{ name: "Bodhify.tech" }],
   creator: "Bodhify.tech",
   publisher: "Bodhify.tech",
   formatDetection: {
     email: false,
-    address: false,
-    telephone: false,
+    address: true,
+    telephone: true,
   },
   metadataBase: new URL("https://bodhify.tech"),
   alternates: {
-    canonical: "/",
+    canonical: "https://bodhify.tech/",
   },
   openGraph: {
-    title: "Bodhify.tech - Professional Web Development Services",
+    title: "Bodhify.tech - Web Development in Mangalore, Karnataka, India",
     description:
-      "Transform your business with modern, responsive websites featuring smooth animations, 3D elements, and exceptional user experiences.",
+      "Get professional web development in Mangalore, Karnataka (575001), India. Bodhify Tech specializes in React, Next.js, animations, 3D elements, and SEO-optimized websites for businesses.",
     url: "https://bodhify.tech",
     siteName: "Bodhify.tech",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Bodhify.tech - Professional Web Development",
+        alt: "Bodhify.tech - Web Development in Mangalore, Karnataka, India",
       },
     ],
     locale: "en_US",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bodhify.tech - Professional Web Development Services",
+    title: "Bodhify.tech - Web Development in Mangalore, Karnataka, India",
     description:
-      "Transform your business with modern, responsive websites featuring smooth animations, 3D elements, and exceptional user experiences.",
+      "Bodhify Tech offers professional website design & development services in Mangalore, Karnataka (575001), India. Next.js, React, UI/UX, SEO, animations, and 3D websites.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -65,11 +65,42 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  // Structured Data JSON-LD
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Bodhify.tech",
+    image: "https://bodhify.tech/logo.png",
+    url: "https://bodhify.tech",
+    telephone: "+91-6363297814",
+    email: "admin@bodhify.tech",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Mangalore",
+      addressLocality: "Mangalore",
+      addressRegion: "KA",
+      postalCode: "575001",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/bodhify-tech",
+      "https://www.facebook.com/bodhify.tech",
+      "https://twitter.com/bodhifytech",
+    ],
+    description:
+      "Professional web development services in Mangalore, Karnataka (575001), India. We build modern, responsive websites with React, Next.js, animations, 3D elements, and exceptional UI/UX.",
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <AOSProvider>
           <Navbar />

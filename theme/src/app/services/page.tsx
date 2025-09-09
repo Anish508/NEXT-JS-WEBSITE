@@ -40,7 +40,7 @@ export default function ServicesPage() {
               <Card
                 key={service.id}
                 className="h-full border rounded-xl shadow-sm hover:shadow-md transition-shadow bg-white"
-                data-aos="fade-right"
+                data-aos="fade-up" data-aos-duration="1500"
               >
                 <CardHeader className="text-center pb-4">
                   <div className="text-4xl mb-4">{service.icon}</div>
@@ -165,9 +165,9 @@ export default function ServicesPage() {
             </Link>
             <Link href="/about">
               <Button
-                variant="outline"
+                // variant="outline"
                 size="lg"
-                className="rounded-lg text-white border-white hover:bg-white/10"
+                className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white"
               >
                 Learn More About Us
               </Button>

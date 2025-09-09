@@ -83,7 +83,9 @@ const Navbar = () => {
                     onMouseEnter={() => setIsServicesOpen(true)}
                     onMouseLeave={() => setIsServicesOpen(false)}
                   >
-                    <button
+                    {/* 🔥 Services is now a Link, not a button */}
+                    <Link
+                      href={item.href}
                       className={cn(
                         "flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200",
                         isActive(item.href)
@@ -93,7 +95,7 @@ const Navbar = () => {
                     >
                       <span>{item.name}</span>
                       <ChevronDown className="w-4 h-4" />
-                    </button>
+                    </Link>
 
                     {isServicesOpen && (
                       <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
@@ -146,11 +148,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
             >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>

@@ -19,7 +19,7 @@ export async function sendContactEmail({ name, email, message }) {
 
     const mailOptions = {
       from: `"Bodhify.tech" <${process.env.EMAIL_USER}>`,
-      to: ["anishbarke9741@gmail.com", "shrinidhim9168@gmail.com"],
+      to: ["bodhify.tech@gmail.com"],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
