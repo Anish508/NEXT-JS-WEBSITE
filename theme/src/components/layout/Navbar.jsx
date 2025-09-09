@@ -57,12 +57,12 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-4">
             {/* Logo Image */}
-            <div className="relative w-16 h-16 sm:w-26 sm:h-26 md:w-34 md:h-34 m-2">
+            <div className="relative w-20 h-20 sm:w-32 sm:h-32 md:w-36 md:h-26 lg:w-45 lg:h-45 m-2">
               <Image
                 src="/brand-logo.png"
                 alt="Bodhify.tech Logo"
                 fill
-                style={{ objectFit: "contain", marginTop: "5px" }}
+                className="object-contain"
                 priority
               />
             </div>
@@ -148,7 +148,11 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>

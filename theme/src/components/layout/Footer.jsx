@@ -39,16 +39,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="relative w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28">
-                <Image
-                  src="/brand-logo.png"
-                  alt="Bodhify.tech Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
+            <div className="flex items-center space-x-3">
+              <Image
+                src="/brand-logo.png"
+                alt="Bodhify.tech Logo"
+                width={120} // default size
+                height={120}
+                className="object-contain w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36"
+                priority
+              />
+
+              <span className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Bodhify.tech
+              </span>
             </div>
 
             {/* Brand Text */}
