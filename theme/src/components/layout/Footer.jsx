@@ -1,31 +1,36 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import Link from "next/link";
+import { Github, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Contact', href: '/contact' }
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const services = [
-    { name: 'Website Development', href: '/services/website-development' },
-    { name: 'Maintenance', href: '/services/maintenance' },
-    { name: 'Deployment', href: '/services/deployment' },
-    { name: 'Analytics', href: '/services/analytics' },
-    { name: 'E-commerce', href: '/services/ecommerce' },
-    { name: 'Consulting', href: '/services/consulting' }
+    { name: "Website Development", href: "/services/website-development" },
+    { name: "Maintenance", href: "/services/maintenance" },
+    { name: "Deployment", href: "/services/deployment" },
+    { name: "Analytics", href: "/services/analytics" },
+    { name: "E-commerce", href: "/services/ecommerce" },
+    { name: "Consulting", href: "/services/consulting" },
   ];
 
   const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/bodhify', icon: Github },
-    { name: 'Twitter', href: 'https://twitter.com/bodhify', icon: Twitter },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/bodhify', icon: Linkedin }
+    { name: "GitHub", href: "https://github.com/bodhify", icon: Github },
+    { name: "Twitter", href: "https://twitter.com/bodhify", icon: Twitter },
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com/company/bodhify",
+      icon: Linkedin,
+    },
   ];
 
   return (
@@ -35,17 +40,27 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
+              <div className="relative w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28">
+                <Image
+                  src="/brand-logo.png"
+                  alt="Bodhify.tech Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Bodhify.tech
-              </span>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Professional web development services with modern technologies, 
-              smooth animations, and exceptional user experiences.
-            </p>
+
+            {/* Brand Text */}
+            <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Bodhify.tech
+            </span>
+          </div>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Professional web development services with modern technologies,
+            smooth animations, and exceptional user experiences.
+          </p>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center overflow-hidden">
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
