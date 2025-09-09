@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,11 +55,20 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">B</span>
+          <Link href="/" className="flex items-center space-x-4">
+            {/* Logo Image */}
+            <div className="relative w-16 h-16 sm:w-26 sm:h-26 md:w-34 md:h-34 m-2">
+              <Image
+                src="/brand-logo.png"
+                alt="Bodhify.tech Logo"
+                fill
+                style={{ objectFit: "contain", marginTop: "5px" }}
+                priority
+              />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+
+            {/* Brand Text */}
+            <span className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Bodhify.tech
             </span>
           </Link>
