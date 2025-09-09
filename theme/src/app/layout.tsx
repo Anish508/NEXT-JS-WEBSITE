@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Professional web development services in Mangalore, Karnataka (575001), India. We build modern, responsive websites with React, Next.js, animations, 3D elements, and exceptional UI/UX to transform your business online.",
   keywords:
-    "web development Mangalore, website design Mangalore Karnataka, Next.js development India, React developer Mangalore, professional web development Karnataka, Bodhify Tech, UI/UX Mangalore, SEO-friendly websites, 3D elements websites Mangalore",
+    "Bodhify Tech, web development Mangalore, website design Mangalore Karnataka, Next.js development India, React developer Mangalore, professional web development Karnataka, UI/UX Mangalore, SEO-friendly websites, 3D elements websites Mangalore",
   authors: [{ name: "Bodhify.tech" }],
   creator: "Bodhify.tech",
   publisher: "Bodhify.tech",
@@ -65,11 +65,42 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  // Structured Data JSON-LD
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Bodhify.tech",
+    image: "https://bodhify.tech/logo.png",
+    url: "https://bodhify.tech",
+    telephone: "+91-6363297814",
+    email: "admin@bodhify.tech",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Mangalore",
+      addressLocality: "Mangalore",
+      addressRegion: "KA",
+      postalCode: "575001",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/bodhify-tech",
+      "https://www.facebook.com/bodhify.tech",
+      "https://twitter.com/bodhifytech",
+    ],
+    description:
+      "Professional web development services in Mangalore, Karnataka (575001), India. We build modern, responsive websites with React, Next.js, animations, 3D elements, and exceptional UI/UX.",
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <AOSProvider>
           <Navbar />
