@@ -55,14 +55,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-4">
+          <Link href="/" className="flex items-center space-x-4 mt-2">
             {/* Logo Image */}
-            <div className="relative w-20 h-20 sm:w-32 sm:h-32 md:w-36 md:h-26 lg:w-45 lg:h-45 m-2">
+            <div className="relative w-20 h-20 sm:w-30 sm:h-25 md:w-26 md:h-26 lg:w-25 lg:h-20 m-4">
               <Image
-                src="/brand-logo.png"
+                src="/bodhify.png"
                 alt="Bodhify.tech Logo"
                 fill
-                className="object-contain"
+                className="object-contain mt-2"
                 priority
               />
             </div>
