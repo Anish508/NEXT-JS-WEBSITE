@@ -57,7 +57,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-4 mt-2">
             {/* Logo Image */}
-            <div className="relative w-20 h-20 sm:w-30 sm:h-25 md:w-26 md:h-26 lg:w-25 lg:h-20 m-4">
+            <div className="relative w-15 h-15 sm:w-30 sm:h-25 md:w-26 md:h-26 lg:w-25 lg:h-20 m-4">
               <Image
                 src="/bodhify.png"
                 alt="Bodhify.tech Logo"
