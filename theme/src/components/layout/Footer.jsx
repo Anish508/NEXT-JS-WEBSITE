@@ -1,7 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Github,
+  Twitter,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+} from "lucide-react";
 import Image from "next/image";
 
 const Footer = () => {
@@ -32,7 +40,7 @@ const Footer = () => {
       href: "https://linkedin.com/company/bodhify-tech",
       icon: Linkedin,
     },
-{
+    {
       name: "Instagram",
       href: "https://instagram.com/bodhify.tech",
       icon: Instagram,
@@ -63,23 +71,23 @@ const Footer = () => {
             Professional web development services with modern technologies,
             smooth animations, and exceptional user experiences.
           </p>
-          <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center overflow-hidden">
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                );
-              })}
-            </div>
+          <div className="flex justify-center space-x-2 sm:space-x-7 md:space-x-9 mt-4">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-600 to-purple-600 
+                   rounded-lg flex items-center justify-center text-white hover:brightness-110 
+                   transition-all duration-200"
+                >
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
+                </a>
+              );
+            })}
           </div>
 
           {/* Quick Links */}
