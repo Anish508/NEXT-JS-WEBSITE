@@ -71,7 +71,7 @@ const Footer = () => {
             Professional web development services with modern technologies,
             smooth animations, and exceptional user experiences.
           </p>
-          <div className="flex justify-center space-x-2 sm:space-x-7 md:space-x-9 mt-4">
+          <div className="flex justify-center space-x-2 sm:space-x-7 md:space-x-6 mt-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
