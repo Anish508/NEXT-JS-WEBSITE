@@ -40,7 +40,8 @@ export default function ServicesPage() {
               <Card
                 key={service.id}
                 className="h-full border rounded-xl shadow-sm hover:shadow-md transition-shadow bg-white"
-                data-aos="fade-up" data-aos-duration="1500"
+                data-aos="fade-up"
+                data-aos-duration="1500"
               >
                 <CardHeader className="text-center pb-4">
                   <div className="text-4xl mb-4">{service.icon}</div>
@@ -65,15 +66,25 @@ export default function ServicesPage() {
                     ))}
                   </div>
 
-                  <div className="flex justify-between items-center border-t pt-4 text-sm">
+                  {/* Pricing & T&C Row */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-t pt-4 text-sm">
                     <div>
                       <div className="text-base font-semibold text-blue-600">
                         {service.price}
                       </div>
                       <div className="text-gray-500">{service.duration}</div>
                     </div>
+
+                    {/* T&C Link */}
+                    <Link
+                      href="./terms"
+                      className="sm:mt-0 text-xs text-gray-500 hover:text-blue-600 hover:underline transition-colors"
+                    >
+                      (Terms & Conditions)
+                    </Link>
                   </div>
 
+                  {/* Learn More CTA */}
                   <Link
                     href={`/services/${service.id}`}
                     className="mt-4 w-full"
@@ -81,8 +92,8 @@ export default function ServicesPage() {
                     <Button
                       size="lg"
                       className="w-full flex items-center justify-center gap-2 rounded-lg 
-                                 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
-                                 hover:from-blue-700 hover:to-purple-700"
+                 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
+                 hover:from-blue-700 hover:to-purple-700"
                     >
                       <span>Learn More</span>
                       <ArrowRight className="w-4 h-4" />

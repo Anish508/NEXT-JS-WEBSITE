@@ -329,6 +329,31 @@ const ServiceDetail = ({ params }: ServiceDetailProps) => {
         </div>
       </section>
 
+      {/* Terms & Conditions Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl border bg-white shadow-sm p-6 sm:p-8">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">
+              Terms & Conditions
+            </h3>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
+              Prices, timelines, and features mentioned for{" "}
+              <span className="font-medium text-gray-900">{service.title}</span>{" "}
+              may vary depending on market demand, cloud service provider
+              charges, and project complexity. Additional factors such as
+              integrations, advanced features, and support requirements can also
+              affect final cost and delivery schedules.
+            </p>
+            <Link
+              href="/terms"
+              className="inline-block text-sm sm:text-base font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+            >
+              View Full Terms & Conditions
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

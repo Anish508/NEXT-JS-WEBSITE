@@ -188,14 +188,14 @@ const Contact = () => {
       icon: Phone,
       title: "Phone",
       description: "Call us during business hours",
-      value: "+1 (234) 567-890",
+      value: "+91 6363297814 ",
       href: "tel:+1234567890",
     },
     {
       icon: MapPin,
       title: "Location",
-      description: "Visit our office",
-      value: "San Francisco, CA",
+      description: "Visit our office (Remote)",
+      value: "Mangalore, Karnataka India",
       href: "#",
     },
   ];
@@ -412,11 +412,11 @@ const Contact = () => {
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Monday - Friday</span>
-                        <span className="font-medium">9:00 AM - 6:00 PM</span>
+                        <span className="font-medium">10:00 AM - 9:00 PM</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Saturday</span>
-                        <span className="font-medium">10:00 AM - 4:00 PM</span>
+                        <span className="font-medium">10:00 AM - 6:00 PM</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Sunday</span>

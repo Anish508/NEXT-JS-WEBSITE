@@ -76,7 +76,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left mt-6">
             <h1
               ref={titleRef}
               className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
@@ -92,8 +92,8 @@ const Hero = () => {
               ref={subtitleRef}
               className="mt-6 text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl"
             >
-              Transform your business with modern, responsive websites featuring
-              smooth animations, 3D elements, and exceptional user experiences.
+              Transform your business with modern, responsive websites designed
+              to deliver seamless performance and exceptional user experiences.
             </p>
 
             <div

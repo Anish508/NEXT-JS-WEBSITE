@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -151,23 +152,25 @@ const About = () => {
 
   const team = [
     {
-      name: "Alex Johnson",
-      role: "Lead Developer",
-      image: "/team/alex.jpg",
-      bio: "Full-stack developer with 8+ years of experience in React, Node.js, and cloud technologies.",
+      name: "Shrinidhi M",
+      role: "Developer",
+      image: "/shri.jpg",
+      bio: "Full-stack developer skilled in cloud technologies, DevOps, and analytics.",
+      portfolio: "https://linkedin.com/in/shrinidhim2004",
     },
     {
-      name: "Sarah Chen",
-      role: "UI/UX Designer",
-      image: "/team/sarah.jpg",
-      bio: "Creative designer specializing in user experience and modern interface design.",
+      name: "Anish",
+      role: "Developer",
+      image: "/me.jpg",
+      bio: "Designer & developer focused on user experience, modern UI, and actionable analytics.",
+      portfolio: "https://linkedin.com/in/anish-poojary-a48388250",
     },
-    {
+    /* {
       name: "Mike Rodriguez",
       role: "DevOps Engineer",
       image: "/team/mike.jpg",
       bio: "Infrastructure specialist focused on scalable deployments and performance optimization.",
-    },
+    }, */
   ];
 
   return (
@@ -209,11 +212,10 @@ const About = () => {
                 Our Mission
               </h2>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
-                At Bodhify.tech, we believe that technology should be
-                accessible, beautiful, and powerful. Our mission is to help
-                businesses transform their digital presence through innovative
-                web solutions that combine cutting-edge technology with
-                exceptional user experiences.
+                At Bodhify.tech, we believe that innovation drives growth and
+                impact. Our mission is to help businesses strengthen their
+                digital presence through creative technology ideas and tailored
+                solutions that deliver lasting value.
               </p>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                 We&apos;re committed to delivering projects that not only meet
@@ -302,23 +304,30 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:grid-cols-2">
             {team.map((member, index) => (
               <Card
                 key={index}
                 className="text-center hover:shadow-lg transition-shadow duration-300 bg-white"
               >
                 <CardHeader>
-                  <div className="w-32 h-32 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-4xl font-bold text-white">
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
+                  <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 relative">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <CardTitle className="text-xl font-semibold">
-                    {member.name}
+                    <a
+                      href={member.portfolio} // LinkedIn or any external URL
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {member.name}
+                    </a>
                   </CardTitle>
                   <CardDescription className="text-blue-600 font-medium">
                     {member.role}
