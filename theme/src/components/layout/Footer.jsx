@@ -28,8 +28,13 @@ const Footer = () => {
     { name: "Twitter", href: "https://twitter.com/bodhify", icon: Twitter },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/company/bodhify",
+      href: "https://linkedin.com/company/bodhify-tech",
       icon: Linkedin,
+    },
+{
+      name: "Instagram",
+      href: "https://instagram.com/bodhify.tech",
+      icon: Instagram,
     },
   ];
 
