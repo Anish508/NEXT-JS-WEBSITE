@@ -33,8 +33,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "GitHub", href: "https://github.com/bodhify", icon: Github },
-    { name: "Twitter", href: "https://twitter.com/bodhify", icon: Twitter },
+    { name: "GitHub", href: "https://github.com/Anish508/NEXT-JS-WEBSITE", icon: Github },
+    { name: "Twitter", href: "https://twitter.com/bodhify_tech", icon: Twitter },
     {
       name: "LinkedIn",
       href: "https://linkedin.com/company/bodhify-tech",
