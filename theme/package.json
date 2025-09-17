@@ -4,10 +4,11 @@
   "private": true,
   "description": "Professional business website for Bodhify.tech with modern UI/UX, GSAP animations, and 3D elements",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint"
+  "dev": "next dev --turbopack",
+  "build": "next build --turbopack",
+  "start": "next start",
+  "lint": "eslint",
+  "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -26,6 +27,7 @@
     "mongoose": "^8.0.3",
     "next": "15.5.2",
     "next-seo": "^6.4.0",
+    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
