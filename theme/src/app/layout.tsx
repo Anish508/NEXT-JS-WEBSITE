@@ -9,9 +9,9 @@ import AOSProvider from "./providers/AOSProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bodhify.tech - Web Development in Mangalore, Karnataka, India",
+  title: "Web Development in Mangalore, Karnataka, India",
   description:
-    "Professional web development services in Mangalore, Karnataka (575001), India. We build modern, responsive websites with React, Next.js, animations, 3D elements, and exceptional UI/UX to transform your business online.",
+    "Professional web development in Mangalore: modern, responsive websites with React, Next.js, animations, 3D, and UI/UX.",
   keywords:
     "Bodhify Tech, web development Mangalore, website design Mangalore Karnataka, Next.js development India, React developer Mangalore, professional web development Karnataka, UI/UX Mangalore, SEO-friendly websites, 3D elements websites Mangalore",
   authors: [{ name: "Bodhify.tech" }],
