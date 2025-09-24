@@ -177,10 +177,11 @@ const Footer = () => {
                 height={80}
                 className="object-contain"
               />
+              </a>
               <span className="text-gray-400 text-sm hover:text-white transition-colors duration-200">
                 Reg No: UDYAM-KR-11-0090144
               </span>
-            </a>
+            
 
             <div className="flex space-x-6">
               <Link
