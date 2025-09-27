@@ -100,6 +100,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <link rel="icon" href="/bodhify.ico" type="image/png" />
+        <link rel="shortcut icon" href="/bodhify.ico" type="image/png" />
       </head>
       <body className={`${inter.className} antialiased`}>
         <AOSProvider>
