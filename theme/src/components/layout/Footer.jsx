@@ -56,7 +56,7 @@ const Footer = () => {
             <Image
               src="/bodhify.png"
               alt="Bodhify.tech Logo"
-              width={120} // intrinsic size for optimization
+              width={120}
               height={120}
               className="object-contain w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36"
               priority
@@ -158,10 +158,31 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
             <p className="text-gray-400 text-sm">
               © {currentYear} Bodhify.tech. All rights reserved.
             </p>
+            
+            {/* Udyam Registration */}
+            <a
+              href="https://udyamregistration.gov.in/udyam_verify.aspx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2"
+            >
+              <Image
+                src="/reg.png"
+                alt="Udyam Registration"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+              </a>
+              <span className="text-gray-400 text-sm hover:text-white transition-colors duration-200">
+                Reg No: UDYAM-KR-11-0090144
+              </span>
+            
+
             <div className="flex space-x-6">
               <Link
                 href="/privacy"
