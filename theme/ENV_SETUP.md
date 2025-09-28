@@ -2,7 +2,7 @@
 
 Create a `.env.local` file in the `theme/` directory with the following variables:
 
-## Required Variables
+## Required Variables by app
 
 ```bash
 # MongoDB Configuration
