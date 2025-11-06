@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 
-// Replace with your Gemini API key
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL =
-  "https://generativelanguage.googleapis.com";
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
 
 const SYSTEM_PROMPT = `
 You are TechMate, a helpful AI assistant for Bodhify Tech, a company that provides end-to-end software development and IT services. 
@@ -45,7 +44,10 @@ export async function POST(req) {
       contents: [
         {
           role: "user",
-          parts: [{ text: `${SYSTEM_PROMPT}\n\nUser: ${message}` }],
+          parts: [
+            { text: SYSTEM_PROMPT },
+            { text: `User: ${message}` },
+          ],
         },
       ],
     };
