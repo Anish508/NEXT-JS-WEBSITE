@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 // Replace with your Gemini API key
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+  "https://generativelanguage.googleapis.com";
 
 const SYSTEM_PROMPT = `
 You are TechMate, a helpful AI assistant for Bodhify Tech, a company that provides end-to-end software development and IT services. 
